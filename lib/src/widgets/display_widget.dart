@@ -10,6 +10,7 @@ class WidgetClouds extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double temp = weather.temp - 273.15;
+<<<<<<< HEAD
     String text_temp = '${temp.toStringAsFixed(0)}°C';
 
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
@@ -149,6 +150,15 @@ class WidgetClouds extends StatelessWidget {
 
 
 /*return Column(
+=======
+    String text_temp = '+${temp.toStringAsFixed(0)}°C';
+    List a = weather.day2;
+    print(a);
+    print('[INFO LST] ${a[0] - 273.15}, ---- ${a[1]}');
+    String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
+
+    return Column(
+>>>>>>> 963167306d112da0c5ffeee119222fa46c2a6827
       children: <Widget>[
         Image.asset('images/clouds.gif', width: 140, height: 140, fit: BoxFit.fill),
         Container(
@@ -165,4 +175,10 @@ class WidgetClouds extends StatelessWidget {
           ),
         ),
       ],
+<<<<<<< HEAD
     );*/
+=======
+    );
+  }
+}
+>>>>>>> 963167306d112da0c5ffeee119222fa46c2a6827
