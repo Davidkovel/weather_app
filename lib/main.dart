@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'src/widgets/display_widget.dart';
 import 'src/services/api_service.dart';
+import 'src/services/serializers.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,49 +13,44 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  late Future<SerializerJsonWeather> futureWeather;
+
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    ApiService.getWeather(49.233082, 28.468218);
+    futureWeather = ApiService.getWeather(49.233082, 28.468218);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(child: Text('Weather App'),),
-      )
-    );
-  }
-}
-
-
-/*import 'package:flutter/material.dart';
-import 'package:your_app/api_service.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  void initState() {
-    super.initState();
-    ApiService.getWeather(49.233082, 28.468218);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(child: Text('Приложение для прогноза погоды')),
+        body: Center(
+          child: FutureBuilder<SerializerJsonWeather>(
+            future: futureWeather,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                String sky = snapshot.data!.main;
+                Widget widget;
+                switch (sky) {
+                  case ('Clouds'):
+                    return WidgetClouds(weather: snapshot.data!);
+                  case ('Sunny'):
+                    widget = Center(child: Text('Sunny +'),);
+                    break;
+                  default:
+                    return WidgetClouds(weather: snapshot.data!);
+                }
+                return widget;
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return CircularProgressIndicator();
+            },
+          ),
+        ),
       ),
     );
   }
-}*/
+}

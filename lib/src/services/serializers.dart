@@ -5,6 +5,8 @@ class SerializerJsonWeather {
   final double tempMax;
   final int pressure;
   final int humidity;
+  final String main;
+  final String description;
 
   SerializerJsonWeather({
     required this.temp,
@@ -13,6 +15,8 @@ class SerializerJsonWeather {
     required this.tempMax,
     required this.pressure,
     required this.humidity,
+    required this.main,
+    required this.description,
   });
 
   factory SerializerJsonWeather.fromJson(Map<String, dynamic> json) {
@@ -23,6 +27,8 @@ class SerializerJsonWeather {
       tempMax: json['main']['temp_max'].toDouble(),
       pressure: json['main']['pressure'],
       humidity: json['main']['humidity'],
+      main: json['weather'][0]['main'],
+      description: json['weather'][0]['description'],
     );
   }
 }
