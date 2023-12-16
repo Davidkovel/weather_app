@@ -1,6 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/src/services/serializers.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_app/src/services/serializers.dart';
+import 'package:weather_app/src/widgets/check_weather.dart';
+
+List<String> temp_from_serializer(weather){
+  double temp = weather.temp - 273.15;
+  String day1_temp = '${temp.toStringAsFixed(0)}°C';
+
+  dynamic temp2 = weather.day2[0];
+  double day2 = temp2 - 273.15;
+  String day2_temp = '${day2.toStringAsFixed(0)}°C';
+
+  dynamic temp3 = weather.day3[0];
+  double day3 = temp3 - 273.15;
+  String day3_temp = '${day3.toStringAsFixed(0)}°C';
+
+  dynamic temp4 = weather.day4[0];
+  double day4 = temp4 - 273.15;
+  String day4_temp = '${day4.toStringAsFixed(0)}°C';
+
+  dynamic temp5 = weather.day5[0];
+  double day5 = temp5 - 273.15;
+  String day5_temp = '${day5.toStringAsFixed(0)}°C';
+
+  return [day1_temp, day2_temp, day3_temp, day4_temp, day5_temp];
+}
+
+List<String> main_from_serializer(weather){
+  String day1_main = weather.main;
+
+  dynamic main2 = weather.day2[1];
+  String day2_main = main2.toString();
+
+  dynamic main3 = weather.day3[1];
+  String day3_main = main3.toString();
+
+  dynamic main4 = weather.day4[1];
+  String day4_main = main4.toString();
+
+  dynamic main5 = weather.day5[1];
+  String day5_main = main5.toString();
+
+  return [day1_main, day2_main, day3_main, day4_main, day5_main];
+}
+
 
 class WidgetClouds extends StatelessWidget {
   final SerializerJsonWeather weather;
@@ -9,12 +52,10 @@ class WidgetClouds extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double temp = weather.temp - 273.15;
-<<<<<<< HEAD
-    String text_temp = '${temp.toStringAsFixed(0)}°C';
-
+    var temperatures = temp_from_serializer(weather);
+    var main_weathers = main_from_serializer(weather);
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
-
+    var i = 0;
   return Scaffold(
       backgroundColor: Color.fromARGB(253, 13, 13, 18),
       appBar: AppBar(
@@ -34,13 +75,13 @@ class WidgetClouds extends StatelessWidget {
               child: Image.asset('images/clouds.gif', width: 140, height: 140, fit: BoxFit.fill),
             ),
             Positioned(
-              left: 40,
+              left: 56,
               top: 220,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    text_temp,
+                    temperatures[0],
                     style: TextStyle(color: Colors.white, fontSize: 36),
                   ),
                   SizedBox(height: 8),
@@ -90,52 +131,12 @@ class WidgetClouds extends StatelessWidget {
                   Positioned(
                     top: 12,
                     left: 12,
-                    child: Row(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Image.asset('images/cloud-cloudy-day-forecast-sun-icon.png', width: 58, height: 50, fit: BoxFit.fill),
-                            SizedBox(height: 8),
-                            Text('30', style: TextStyle(color: Colors.white, fontSize: 12),),
-                          ]
-                        ),
-                        SizedBox(width: 14,),
-                        Column(
-                          children: [
-                            Image.asset('images/cloud-cloudy-day-forecast-sun-icon.png', width: 58, height: 50, fit: BoxFit.fill),
-                            SizedBox(height: 8),
-                            Text('16', style: TextStyle(color: Colors.white, fontSize: 12),),
-                          ]
-                        ),
-                        SizedBox(width: 14,),
-                        Column(
-                          children: [
-                            Image.asset('images/if-weather-32-2682819_90762.png', width: 58, height: 50, fit: BoxFit.fill),
-                            SizedBox(height: 8),
-                            Text('20', style: TextStyle(color: Colors.white, fontSize: 12),),
-                          ]
-                        ),
-                        SizedBox(width: 14,),
-                        Column(
-                          children: [
-                            Image.asset('images/unnamed.png', width: 58, height: 50, fit: BoxFit.fill),
-                            SizedBox(height: 8),
-                            Text('7', style: TextStyle(color: Colors.white, fontSize: 12),),
-                          ]
-                        ),
-                        SizedBox(width: 14,),
-                        Column(
-                          children: [
-                            Image.asset('images/if-weather-32-2682819_90762.png', width: 58, height: 50, fit: BoxFit.fill),
-                            SizedBox(height: 8),
-                            Text('13', style: TextStyle(color: Colors.white, fontSize: 12),),
-                          ]
-                        ),
-                      ]
-                    )
+                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
                   ),
+                  SizedBox(height: 100,),
+                  ElevatedButton(onPressed: (){
+                    i++;
+                  }, child: Text('323232'))
                 ],
               ),
             ),
@@ -150,15 +151,6 @@ class WidgetClouds extends StatelessWidget {
 
 
 /*return Column(
-=======
-    String text_temp = '+${temp.toStringAsFixed(0)}°C';
-    List a = weather.day2;
-    print(a);
-    print('[INFO LST] ${a[0] - 273.15}, ---- ${a[1]}');
-    String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
-
-    return Column(
->>>>>>> 963167306d112da0c5ffeee119222fa46c2a6827
       children: <Widget>[
         Image.asset('images/clouds.gif', width: 140, height: 140, fit: BoxFit.fill),
         Container(
@@ -175,10 +167,4 @@ class WidgetClouds extends StatelessWidget {
           ),
         ),
       ],
-<<<<<<< HEAD
     );*/
-=======
-    );
-  }
-}
->>>>>>> 963167306d112da0c5ffeee119222fa46c2a6827
