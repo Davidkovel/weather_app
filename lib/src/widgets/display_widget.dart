@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'package:weather_app/src/services/serializers.dart';
 import 'package:weather_app/src/widgets/check_weather.dart';
+import '../db/model.dart';
+import './second_page.dart';
+
 
 List<String> temp_from_serializer(weather){
   double temp = weather.temp - 273.15;
@@ -54,6 +58,7 @@ class WidgetClouds extends StatelessWidget {
   Widget build(BuildContext context) {
     var temperatures = temp_from_serializer(weather);
     var main_weathers = main_from_serializer(weather);
+    createDatabase();
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(
@@ -133,10 +138,12 @@ class WidgetClouds extends StatelessWidget {
                     left: 12,
                     child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
                   ),
-                  SizedBox(height: 100,),
-                  ElevatedButton(onPressed: (){
-                    i++;
-                  }, child: Text('323232'))
+                  SizedBox(height: 100 ,),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                    }, child: Text('data'))
                 ],
               ),
             ),
@@ -147,24 +154,3 @@ class WidgetClouds extends StatelessWidget {
   }
 }
 
-
-
-
-/*return Column(
-      children: <Widget>[
-        Image.asset('images/clouds.gif', width: 140, height: 140, fit: BoxFit.fill),
-        Container(
-          height: 167,
-          width: 169,
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(text_temp, style: TextStyle(fontSize: 24, color: Colors.white)),
-                Text(formattedDate, style: TextStyle(fontSize: 17, color: const Color.fromARGB(255, 64, 84, 85))),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );*/
