@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 import 'package:weather_app/src/services/serializers.dart';
 import 'package:weather_app/src/widgets/check_weather.dart';
-import '../db/model.dart';
+// import '../db/model.dart';
 import './second_page.dart';
 
 
@@ -58,7 +58,7 @@ class WidgetClouds extends StatelessWidget {
   Widget build(BuildContext context) {
     var temperatures = temp_from_serializer(weather);
     var main_weathers = main_from_serializer(weather);
-    createDatabase();
+    // createDatabase();
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(

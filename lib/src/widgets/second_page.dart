@@ -1,10 +1,14 @@
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app/src/services/service_notification/check_time.dart';
+
+import '../db/model.dart';
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +32,50 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  Time _time = Time(hour: 11, minute: 30, second: 20);
+  Time _time = Time(hour: 1, minute: 02, second: 2);
   bool iosStyle = false;
+
 
   void onTimeChanged(Time newTime) {
     setState(() {
       _time = newTime;
+      print('$_time');
+      print('$newTime');
+      //insertTime(_time);
     });
   }
+  
+  String formatTime(DateTime time) {
+    String hour = time.hour < 10 ? '0${time.hour}' : '${time.hour}';
+    String minute = time.minute < 10 ? '0${time.minute}' : '${time.minute}';
+    return '$hour:$minute';
+  }
+
+
+String ff(TimeOfDay newTime) {
+  // Получите текущую дату
+  DateTime currentDate = DateTime.now();
+
+  // Создайте новый объект DateTime, объединив текущую дату с выбранным временем
+  DateTime combinedDateTime = DateTime(
+    currentDate.year,
+    currentDate.month,
+    currentDate.day,
+    newTime.hour,
+    newTime.minute,
+  );
+
+  // Вызовите WeatherAPICreate, передавая combinedDateTime
+  final formattedTime = formatTime(combinedDateTime);
+  //WeatherAPICreate(combinedDateTime);
+  print('${formattedTime}');
+  if (formattedTime != '01:02'){
+    List<String> lst = [formattedTime];
+    startEventLoop(lst[0]);
+    print('${lst}');
+  }
+  return "Ви вибрали: $formattedTime";
+}
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +87,12 @@ class _HomeState extends State<Home> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
+                Text(
+                  "${ff(_time)}"
+                      .toUpperCase(),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 24),
+                ),
                 const SizedBox(height: 10),
                 const SizedBox(height: 10),
                 const Divider(),
@@ -59,8 +105,8 @@ class _HomeState extends State<Home> {
                   onChange: onTimeChanged,
                   minuteInterval: TimePickerInterval.FIVE,
                   iosStylePicker: iosStyle,
-                  minHour: 9,
-                  maxHour: 21,
+                  minHour: 1,
+                  maxHour: 23,
                   is24HrFormat: false,
                 ),
               ],
@@ -71,3 +117,48 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+
+/*    return Scaffold(
+      body: SafeArea(
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Text(
+                  "Popup Picker Style",
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                Text(
+                  "${_time.hour}:${_time.minute}:${_time.second} ${_time.period.name}"
+                      .toUpperCase(),
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.displayLarge,
+                ),
+                const SizedBox(height: 10),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      showPicker(
+                        showSecondSelector: true,
+                        context: context,
+                        value: _time,
+                        onChange: onTimeChanged,
+                        minuteInterval: TimePickerInterval.FIVE,
+                        // Optional onChange to receive value as DateTime
+                        onChangeDateTime: (DateTime dateTime) {
+                          // print(dateTime);
+                          debugPrint("[debug datetime]:  $dateTime");
+                        },
+                      ),
+                    );
+                  },
+                  child: const Text(
+                    "Open time picker",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),*/
