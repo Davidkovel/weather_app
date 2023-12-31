@@ -11,12 +11,13 @@ final InitializationSettings initializationSettings =
 
 void showNotificationForRain() async {
   var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      'your channel id', 'your channel name', 'your channel description',
+      'your channel id', 'your channel name', //'your channel description',
       importance: Importance.max, priority: Priority.high, showWhen: false);
-  var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+  //var iOSPlatformChannelSpecifics = IOSNotificationDetails();
   var platformChannelSpecifics = NotificationDetails(
       android: androidPlatformChannelSpecifics,
-      iOS: iOSPlatformChannelSpecifics);
+  );
+    //  iOS: iOSPlatformChannelSpecifics);
   await flutterLocalNotificationsPlugin.show(
       0, 'Уведомление', 'Сейчас идет дождь', platformChannelSpecifics,
       payload: 'item x');

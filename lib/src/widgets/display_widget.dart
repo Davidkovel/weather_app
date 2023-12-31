@@ -3,9 +3,10 @@ import 'package:intl/intl.dart';
 
 import 'package:weather_app/src/services/serializers.dart';
 import 'package:weather_app/src/widgets/check_weather.dart';
+import 'package:weather_app/src/widgets/search_field/search_widget.dart';
 // import '../db/model.dart';
 import './second_page.dart';
-
+import './search_field/search_widget.dart';
 
 List<String> temp_from_serializer(weather){
   double temp = weather.temp - 273.15;
@@ -74,6 +75,8 @@ class WidgetClouds extends StatelessWidget {
       body: Container(
         child: Stack(
           children: [
+            SearchBarApp(),
+            SizedBox(height: 50,),
             Positioned(
               left: 120,
               top: 50,
