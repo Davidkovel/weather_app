@@ -52,8 +52,9 @@ List<String> main_from_serializer(weather){
 
 class WidgetClouds extends StatelessWidget {
   final SerializerJsonWeather weather;
+  final String? coutryName;
 
-  WidgetClouds({required this.weather});
+  WidgetClouds({required this.weather, this.coutryName});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +67,7 @@ class WidgetClouds extends StatelessWidget {
       backgroundColor: Color.fromARGB(253, 13, 13, 18),
       appBar: AppBar(
         title: Text(
-          'Kiev',
+          coutryName?? 'Kiev',
           style: TextStyle(fontSize: 32, color: Colors.white),
         ),
         centerTitle: true,

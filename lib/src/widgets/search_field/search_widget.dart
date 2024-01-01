@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-
 import 'dart:convert';
+
+import 'package:weather_app/src/services/api_service.dart';
+import 'change_widget.dart';
 
 /// Flutter code sample for [SearchBar].
 
 void main() => runApp(const SearchBarApp());
 
 class SearchBarApp extends StatefulWidget {
-  const SearchBarApp({super.key});
+  const SearchBarApp({Key? key}) : super(key: key);
 
   @override
   State<SearchBarApp> createState() => _SearchBarAppState();
@@ -37,18 +39,21 @@ class _SearchBarAppState extends State<SearchBarApp> {
     return listTiles;
   }
 
+  Future<Map<String, dynamic>> fetchAndPrintCoordinates(String countryName) async {
+    var coordinates = await GetCoordinate(q: countryName).fetchCoordinates();
+    print('Latitude: ${coordinates['latitude']}, Longitude: ${coordinates['longitude']}');
+    return {'latitude': coordinates['latitude'], 'longitude': coordinates['longitude']};
+  }
+
+
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = ThemeData(
         useMaterial3: true,
         brightness: isDark ? Brightness.dark : Brightness.light);
 
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: themeData,
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Color.fromARGB(253, 13, 13, 18),
-        
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SearchAnchor(
@@ -68,24 +73,42 @@ class _SearchBarAppState extends State<SearchBarApp> {
                 Tooltip(
                   message: 'Change brightness mode',
                   child: IconButton(
-                    isSelected: isDark,
+                    icon: isDark ? const Icon(Icons.brightness_2_outlined) : const Icon(Icons.wb_sunny_outlined),
                     onPressed: () {
                       setState(() {
                         isDark = !isDark;
                       });
                     },
-                    icon: const Icon(Icons.wb_sunny_outlined),
-                    selectedIcon: const Icon(Icons.brightness_2_outlined),
                   ),
                 )
               ],
             );
-          }, suggestionsBuilder:
-                  (BuildContext context, SearchController controller) async {
-            return await fileCoutriesNames();
-          }),
+          }, suggestionsBuilder: (BuildContext context, SearchController controller) async {
+              List<ListTile> countries = await fileCoutriesNames();
+              return countries.map((ListTile countryTile) {
+                return ListTile(
+                  title: countryTile.title,
+                  onTap: () {
+                    setState(() {
+                      controller.closeView((countryTile.title as Text).data);
+                      print('fsdfds{${countryTile.title}}');
+                      String countryName = (countryTile.title as Text).data!;
+                      fetchAndPrintCoordinates(countryName).then((coordinates) {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => MyApp2(lat: coordinates['latitude'].toString(), lon: coordinates['longitude'].toString()),
+                        ),
+                      );
+                    });
+
+                      },
+                    );
+                  });
+                }
+              );
+            },
+          ),
         ),
-      ),
-    );
+      );
   }
 }
