@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'src/services/service_notification/notifications.dart';
 import 'src/widgets/display_widget.dart';
 import 'src/services/api_service.dart';
 import 'src/services/serializers.dart';
 
 void main() {
+  initializeNotifications(); 
   runApp(MyApp());
 }
 
@@ -17,6 +19,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+    checkNotificationPermission();
     super.initState();
     futureWeather = ApiService.getWeather(49.233082, 28.468218);
   }

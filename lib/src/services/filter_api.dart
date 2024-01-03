@@ -27,8 +27,7 @@ class FilterApiService {
       }
     }
     print('[INFO TEST] - $finalData');
-    print('[INFO TEST] - $finalData');
-
+    
     return finalData;
   }
 }

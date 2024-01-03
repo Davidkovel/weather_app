@@ -46,36 +46,41 @@ class _HomeState extends State<Home> {
   }
   
   String formatTime(DateTime time) {
+    String year = '${time.year}';
+    String month = time.month < 10 ? '0${time.month}' : '${time.month}';
+    String day = time.day < 10 ? '0${time.day}' : '${time.day}';
     String hour = time.hour < 10 ? '0${time.hour}' : '${time.hour}';
     String minute = time.minute < 10 ? '0${time.minute}' : '${time.minute}';
-    return '$hour:$minute';
+    return '$year-$month-$day $hour:$minute';
   }
 
 
-String ff(TimeOfDay newTime) {
-  // Получите текущую дату
-  DateTime currentDate = DateTime.now();
 
-  // Создайте новый объект DateTime, объединив текущую дату с выбранным временем
-  DateTime combinedDateTime = DateTime(
-    currentDate.year,
-    currentDate.month,
-    currentDate.day,
-    newTime.hour,
-    newTime.minute,
-  );
+  Future<String> ff(TimeOfDay newTime) async {
+    // Получите текущую дату
+    DateTime currentDate = DateTime.now();
 
-  // Вызовите WeatherAPICreate, передавая combinedDateTime
-  final formattedTime = formatTime(combinedDateTime);
-  //WeatherAPICreate(combinedDateTime);
-  print('${formattedTime}');
-  if (formattedTime != '01:02'){
-    List<String> lst = [formattedTime];
-    startEventLoop(lst[0]);
-    print('${lst}');
+    // Создайте новый объект DateTime, объединив текущую дату с выбранным временем
+    DateTime combinedDateTime = DateTime(
+      currentDate.year,
+      currentDate.month,
+      currentDate.day,
+      newTime.hour,
+      newTime.minute,
+    );
+
+    final formattedTime = formatTime(combinedDateTime);
+    int id = await WeatherAPICreate(combinedDateTime); // Use await here
+    print('hhhbbk ${formattedTime}');
+
+    if (formattedTime != '01:02'){
+      List<String> lst = [formattedTime];
+      startEventLoop(id);
+      print('${lst}');
+    }
+    return "Ви вибрали: $formattedTime";
   }
-  return "Ви вибрали: $formattedTime";
-}
+
 
   @override
   Widget build(BuildContext context) {
