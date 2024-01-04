@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 
 import 'package:weather_app/src/services/serializers.dart';
 import 'package:weather_app/src/services/api_service.dart';
+import 'package:workmanager/workmanager.dart';
+
 import '../../db/model.dart';
 import 'notifications.dart';
 
@@ -23,6 +25,7 @@ void checkConditions(int id) async {
       if (conditionRain) {
         // Дощщ || Уведомления должно срабатувать тут !!!
         RainyNotification();
+        // Workmanager().cancelByUniqueName("1");
         print('Дощщщ!!!');
       }
       else {

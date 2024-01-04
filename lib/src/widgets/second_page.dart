@@ -91,8 +91,8 @@ class _HomeState extends State<Home> {
 
     if (formattedTime != '01:02'){
       List<String> lst = [formattedTime];
-      // startEventLoop(id);
-      callbackDispatcher(id);
+      startEventLoop(id);
+      //callbackDispatcher(id);
       print('${lst}');
     }
     return "Ви вибрали: $formattedTime";
