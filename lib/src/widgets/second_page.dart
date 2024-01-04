@@ -1,8 +1,24 @@
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/src/services/service_notification/check_time.dart';
+import 'package:workmanager/workmanager.dart';
 
 import '../db/model.dart';
+
+void runBackgroundTask(){
+  WidgetsFlutterBinding.ensureInitialized();
+  Workmanager().initialize(callbackDispatcher);
+  Workmanager().registerPeriodicTask("1", "simplePeriodicTask", 
+      frequency: Duration(minutes: 15));
+}
+
+void callbackDispatcher(int id) {
+  print('started background task');
+  Workmanager().executeTask((task, inputData) async {
+    startEventLoop(id);
+    return Future.value(true);
+  });
+}
 
 void main() => runApp(const MyApp());
 
@@ -75,7 +91,8 @@ class _HomeState extends State<Home> {
 
     if (formattedTime != '01:02'){
       List<String> lst = [formattedTime];
-      startEventLoop(id);
+      // startEventLoop(id);
+      callbackDispatcher(id);
       print('${lst}');
     }
     return "Ви вибрали: $formattedTime";

@@ -17,6 +17,7 @@ void checkConditions(int id) async {
   if (coditionTime) {
     // время прошло
     print('Время меньше за рамки текущего. Выберите больше времени');
+    print('Или за это время не было дощщ');
   } else {
       bool conditionRain = await checkRain(allertTime);
       if (conditionRain) {
