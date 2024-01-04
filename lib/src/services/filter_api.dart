@@ -1,5 +1,4 @@
 class FilterApiService {
-  // Фильтрация для API запроса
   static List<Map<String, dynamic>> filterWeatherData(Map<String, dynamic> data, int days) {
     List<Map<String, dynamic>> filteredData = [];
     for (var item in data['list']) {

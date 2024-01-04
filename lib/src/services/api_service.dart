@@ -15,7 +15,6 @@ class ApiService {
       var responseData = json.decode(response.body); // С JSON на обычний типа данных DART
       List<Map<String, dynamic>> filteredData = await FilterApiService.filterWeatherData(responseData, 5);
       print('-- $filteredData');
-      //double temp_c = weather.temp - 273.15;
       return SerializerJsonWeather.fromJson(filteredData);
     }else {
       print('error an api request');

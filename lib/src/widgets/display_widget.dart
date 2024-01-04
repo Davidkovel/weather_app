@@ -4,9 +4,18 @@ import 'package:intl/intl.dart';
 import 'package:weather_app/src/services/serializers.dart';
 import 'package:weather_app/src/widgets/check_weather.dart';
 import 'package:weather_app/src/widgets/search_field/search_widget.dart';
-// import '../db/model.dart';
+
 import './second_page.dart';
-import './search_field/search_widget.dart';
+
+List<dynamic> wind_and_humidity_from_serializer(weather){
+  String wind_speed = weather.wind_speed[0]; // <- from 5.01 to 5 
+  String humidity = weather.humidity;
+
+  wind_speed += ' км/ч';
+  humidity += '%';
+
+  return [wind_speed, humidity];
+}
 
 List<String> temp_from_serializer(weather){
   double temp = weather.temp - 273.15;
@@ -60,6 +69,7 @@ class WidgetClouds extends StatelessWidget {
   Widget build(BuildContext context) {
     var temperatures = temp_from_serializer(weather);
     var main_weathers = main_from_serializer(weather);
+    var weather_descriptions = wind_and_humidity_from_serializer(weather);
     // createDatabase();
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
@@ -117,7 +127,7 @@ class WidgetClouds extends StatelessWidget {
                           Image.asset('images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
-                            '12 км/год',
+                            weather_descriptions[0],
                             style: TextStyle(color: Colors.white, fontSize: 18),
                           ),
                         ],
@@ -128,7 +138,7 @@ class WidgetClouds extends StatelessWidget {
                           Image.asset('images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
-                            '90%',
+                            weather_descriptions[1],
                             style: TextStyle(color: Colors.white, fontSize: 18),
                           ),
                         ],
