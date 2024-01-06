@@ -62,15 +62,16 @@ List<String> main_from_serializer(weather){
 class WidgetClouds extends StatelessWidget {
   final SerializerJsonWeather weather;
   final String? coutryName;
-
+ 
   WidgetClouds({required this.weather, this.coutryName});
-
+  
   @override
   Widget build(BuildContext context) {
     var temperatures = temp_from_serializer(weather);
     var main_weathers = main_from_serializer(weather);
     var weather_descriptions = wind_and_humidity_from_serializer(weather);
     // createDatabase();
+     print('$coutryName');
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(

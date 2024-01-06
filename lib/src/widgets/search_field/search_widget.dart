@@ -26,12 +26,12 @@ class _SearchBarAppState extends State<SearchBarApp> {
     // Хэш таблицы
     Map<String, dynamic> data = jsonDecode(jsonString);
 
-    // Использование данных для генерации списка
     List<ListTile> listTiles = data.entries.map((entry) {
       return ListTile(
         title: Text(entry.value),
         onTap: () {
           // Ваш код здесь
+          print('ENTRY $entry');
         },
       );
     }).toList();
@@ -96,7 +96,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
                       fetchAndPrintCoordinates(countryName).then((coordinates) {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => MyApp2(lat: coordinates['latitude'].toString(), lon: coordinates['longitude'].toString()),
+                          builder: (context) => MyApp2(lat: coordinates['latitude'].toString(), lon: coordinates['longitude'].toString(), Country: countryName,),
                         ),
                       );
                     });
