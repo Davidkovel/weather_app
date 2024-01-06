@@ -18,6 +18,8 @@ void checkConditions(int id) async {
   bool coditionTime = await hasTimePassed(allertTime);
   if (coditionTime) {
     // время прошло
+    await WeatherAPIDelete(id);
+    
     print('Время меньше за рамки текущего. Выберите больше времени');
     print('Или за это время не было дощщ');
   } else {
@@ -26,11 +28,7 @@ void checkConditions(int id) async {
         // Дощщ || Уведомления должно срабатувать тут !!!
         RainyNotification();
         // Workmanager().cancelByUniqueName("1");
-        // ЗАМЕТКА: ------------------------------------
-        //  НУЖНО ЕЩЕ УДАЛИТЬ ЗАПИСЬ С БД DJANGO!!!!!!!!
-        //  НУЖНО ЕЩЕ УДАЛИТЬ ЗАПИСЬ С БД DJANGO!!!!!!!!
-        //  НУЖНО ЕЩЕ УДАЛИТЬ ЗАПИСЬ С БД DJANGO!!!!!!!!
-        //  НУЖНО ЕЩЕ УДАЛИТЬ ЗАПИСЬ С БД DJANGO!!!!!!!!
+        await WeatherAPIDelete(id);
         print('Дощщщ!!!');
       }
       else {
