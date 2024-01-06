@@ -57,7 +57,6 @@ class _HomeState extends State<Home> {
       _time = newTime;
       print('$_time');
       print('$newTime');
-      //insertTime(_time);
     });
   }
   
@@ -67,16 +66,13 @@ class _HomeState extends State<Home> {
     String day = time.day < 10 ? '0${time.day}' : '${time.day}';
     String hour = time.hour < 10 ? '0${time.hour}' : '${time.hour}';
     String minute = time.minute < 10 ? '0${time.minute}' : '${time.minute}';
+    print('$year-$month-$day $hour:$minute');
     return '$year-$month-$day $hour:$minute';
   }
 
-
-
-  Future<String> ff(TimeOfDay newTime) async {
-    // Получите текущую дату
+  String processAndDisplayTime(TimeOfDay newTime){
     DateTime currentDate = DateTime.now();
 
-    // Создайте новый объект DateTime, объединив текущую дату с выбранным временем
     DateTime combinedDateTime = DateTime(
       currentDate.year,
       currentDate.month,
@@ -84,9 +80,15 @@ class _HomeState extends State<Home> {
       newTime.hour,
       newTime.minute,
     );
-
     final formattedTime = formatTime(combinedDateTime);
-    int id = await WeatherAPICreate(combinedDateTime); // Use await here
+    featureCheckingTime(combinedDateTime);
+    return "Ви вибрали: $formattedTime";
+  }
+
+  Future<String> featureCheckingTime(DateTime combinedDateTime) async {
+    print('$combinedDateTime');
+    final formattedTime = formatTime(combinedDateTime);
+    int id = await WeatherAPICreate(combinedDateTime);
     print('hhhbbk ${formattedTime}');
 
     if (formattedTime != '01:02'){
@@ -110,7 +112,7 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  "${ff(_time)}"
+                  "${processAndDisplayTime(_time)}"
                       .toUpperCase(),
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.white, fontSize: 24),

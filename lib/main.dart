@@ -49,7 +49,7 @@ class _MyAppState extends State<MyApp> {
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }
-              return CircularProgressIndicator();
+              return CircularProgressIndicator();  // Пока данные загружаются, отобразите индикатор загрузки
             },
           ),
         ),
