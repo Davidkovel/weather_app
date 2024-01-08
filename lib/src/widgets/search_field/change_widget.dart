@@ -38,17 +38,22 @@ class _MyAppState extends State<MyApp2> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 String sky = snapshot.data!.main;
-                Widget widget;
                 switch (sky) {
                   case ('Clouds'):
                     return WidgetClouds(weather: snapshot.data!, coutryName: country);
                   case ('Sunny'):
-                    widget = Center(child: Text('Sunny +'),);
-                    break;
+                    return WidgetSunny(weather: snapshot.data!, coutryName: country);
+                  case ('Rain'):
+                    return WidgetRain(weather: snapshot.data!, coutryName: country);  
+                  case ('Snow'):
+                    return WidgetSnow(weather: snapshot.data!, coutryName: country); 
+                  case ('Clear'):
+                    return WidgetClear(weather: snapshot.data!, coutryName: country); 
                   default:
-                    return WidgetClouds(weather: snapshot.data!, coutryName: country);
+                    // return WidgetSunny(weather: snapshot.data!, coutryName: country);
+                  
+                    return WidgetRain(weather: snapshot.data!, coutryName: country);
                 }
-                return widget;
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               }

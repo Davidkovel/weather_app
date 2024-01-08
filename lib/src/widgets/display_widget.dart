@@ -91,7 +91,7 @@ class WidgetClouds extends StatelessWidget {
             SizedBox(height: 50,),
             Positioned(
               left: 120,
-              top: 50,
+              top: 68,
               child: Image.asset('images/clouds.gif', width: 140, height: 140, fit: BoxFit.fill),
             ),
             Positioned(
@@ -169,3 +169,442 @@ class WidgetClouds extends StatelessWidget {
   }
 }
 
+class WidgetSunny extends StatelessWidget {
+  final SerializerJsonWeather weather;
+  final String? coutryName;
+ 
+  WidgetSunny({required this.weather, this.coutryName});
+  
+  @override
+  Widget build(BuildContext context) {
+    var temperatures = temp_from_serializer(weather);
+    var main_weathers = main_from_serializer(weather);
+    var weather_descriptions = wind_and_humidity_from_serializer(weather);
+    // createDatabase();
+     print('$coutryName');
+    String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
+    var i = 0;
+  return Scaffold(
+      backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      appBar: AppBar(
+        title: Text(
+          coutryName?? 'Kiev',
+          style: TextStyle(fontSize: 32, color: Colors.white),
+        ),
+        centerTitle: true,
+        backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      ),
+      body: Container(
+        child: Stack(
+          children: [
+            SearchBarApp(),
+            SizedBox(height: 50,),
+            Positioned(
+              left: 120,
+              top: 50,
+              child: Image.asset('images/sunny.gif', width: 140, height: 140, fit: BoxFit.fill),
+            ),
+            Positioned(
+              left: 56,
+              top: 220,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    temperatures[0],
+                    style: TextStyle(color: Colors.white, fontSize: 36),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    formattedDate,
+                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  ),
+                  SizedBox(height: 50),
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Image.asset('images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            'low',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 30),
+                      Column(
+                        children: [
+                          Image.asset('images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            weather_descriptions[0],
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 30),
+                      Column(
+                        children: [
+                          Image.asset('images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            weather_descriptions[1],
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                     // SizedBox(height: 150,),
+                    ],
+                  ),// -- 3 objects
+                  SizedBox(height: 40,),
+                  Positioned(
+                    top: 12,
+                    left: 12,
+                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
+                  ),
+                  SizedBox(height: 100 ,),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                    }, child: Text('data'))
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WidgetRain extends StatelessWidget {
+  final SerializerJsonWeather weather;
+  final String? coutryName;
+ 
+  WidgetRain({required this.weather, this.coutryName});
+  
+  @override
+  Widget build(BuildContext context) {
+    var temperatures = temp_from_serializer(weather);
+    var main_weathers = main_from_serializer(weather);
+    var weather_descriptions = wind_and_humidity_from_serializer(weather);
+    // createDatabase();
+     print('$coutryName');
+    String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
+    var i = 0;
+  return Scaffold(
+      backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      appBar: AppBar(
+        title: Text(
+          coutryName?? 'Kiev',
+          style: TextStyle(fontSize: 32, color: Colors.white),
+        ),
+        centerTitle: true,
+        backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      ),
+      body: Container(
+        child: Stack(
+          children: [
+            SearchBarApp(),
+            SizedBox(height: 50,),
+            Positioned(
+              left: 120,
+              top: 68,
+              child: Image.asset('images/rain.gif', width: 140, height: 140, fit: BoxFit.fill),
+            ),
+            Positioned(
+              left: 56,
+              top: 220,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    temperatures[0],
+                    style: TextStyle(color: Colors.white, fontSize: 36),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    formattedDate,
+                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  ),
+                  SizedBox(height: 50),
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Image.asset('images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            'low',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 30),
+                      Column(
+                        children: [
+                          Image.asset('images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            weather_descriptions[0],
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 30),
+                      Column(
+                        children: [
+                          Image.asset('images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            weather_descriptions[1],
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                     // SizedBox(height: 150,),
+                    ],
+                  ),// -- 3 objects
+                  SizedBox(height: 40,),
+                  Positioned(
+                    top: 12,
+                    left: 12,
+                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
+                  ),
+                  SizedBox(height: 100 ,),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                    }, child: Text('data'))
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WidgetSnow extends StatelessWidget {
+  final SerializerJsonWeather weather;
+  final String? coutryName;
+ 
+  WidgetSnow({required this.weather, this.coutryName});
+  
+  @override
+  Widget build(BuildContext context) {
+    var temperatures = temp_from_serializer(weather);
+    var main_weathers = main_from_serializer(weather);
+    var weather_descriptions = wind_and_humidity_from_serializer(weather);
+    // createDatabase();
+     print('$coutryName');
+    String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
+    var i = 0;
+  return Scaffold(
+      backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      appBar: AppBar(
+        title: Text(
+          coutryName?? 'Kiev',
+          style: TextStyle(fontSize: 32, color: Colors.white),
+        ),
+        centerTitle: true,
+        backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      ),
+      body: Container(
+        child: Stack(
+          children: [
+            SearchBarApp(),
+            SizedBox(height: 50,),
+            Positioned(
+              left: 120,
+              top: 50,
+              child: Image.asset('images/snow.gif', width: 140, height: 140, fit: BoxFit.fill),
+            ),
+            Positioned(
+              left: 56,
+              top: 220,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    temperatures[0],
+                    style: TextStyle(color: Colors.white, fontSize: 36),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    formattedDate,
+                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  ),
+                  SizedBox(height: 50),
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Image.asset('images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            'low',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 30),
+                      Column(
+                        children: [
+                          Image.asset('images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            weather_descriptions[0],
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 30),
+                      Column(
+                        children: [
+                          Image.asset('images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            weather_descriptions[1],
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                     // SizedBox(height: 150,),
+                    ],
+                  ),// -- 3 objects
+                  SizedBox(height: 40,),
+                  Positioned(
+                    top: 12,
+                    left: 12,
+                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
+                  ),
+                  SizedBox(height: 100 ,),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                    }, child: Text('data'))
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class WidgetClear extends StatelessWidget {
+  final SerializerJsonWeather weather;
+  final String? coutryName;
+ 
+  WidgetClear({required this.weather, this.coutryName});
+  
+  @override
+  Widget build(BuildContext context) {
+    var temperatures = temp_from_serializer(weather);
+    var main_weathers = main_from_serializer(weather);
+    var weather_descriptions = wind_and_humidity_from_serializer(weather);
+    // createDatabase();
+     print('$coutryName');
+    String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
+    var i = 0;
+  return Scaffold(
+      backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      appBar: AppBar(
+        title: Text(
+          coutryName?? 'Kiev',
+          style: TextStyle(fontSize: 32, color: Colors.white),
+        ),
+        centerTitle: true,
+        backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      ),
+      body: Container(
+        child: Stack(
+          children: [
+            SearchBarApp(),
+            SizedBox(height: 50,),
+            Positioned(
+              left: 120,
+              top: 68,
+              child: Image.asset('images/clear.gif', width: 130, height: 140, fit: BoxFit.fill),
+            ),
+            Positioned(
+              left: 56,
+              top: 220,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    temperatures[0],
+                    style: TextStyle(color: Colors.white, fontSize: 36),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    formattedDate,
+                    style: TextStyle(color: Colors.white, fontSize: 24),
+                  ),
+                  SizedBox(height: 50),
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Image.asset('images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            'low',
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 30),
+                      Column(
+                        children: [
+                          Image.asset('images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            weather_descriptions[0],
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: 30),
+                      Column(
+                        children: [
+                          Image.asset('images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
+                          SizedBox(height: 8),
+                          Text(
+                            weather_descriptions[1],
+                            style: TextStyle(color: Colors.white, fontSize: 18),
+                          ),
+                        ],
+                      ),
+                     // SizedBox(height: 150,),
+                    ],
+                  ),// -- 3 objects
+                  SizedBox(height: 40,),
+                  Positioned(
+                    top: 12,
+                    left: 12,
+                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
+                  ),
+                  SizedBox(height: 100 ,),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Home()));
+                    }, child: Text('data'))
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -10,6 +10,9 @@ class DailyWeather extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    for (int i = 0; i < temperatures.length; i++) {
+      print('-- ${mainWeathers[i]}');
+    }
     return Row(
       children: [
         for (int i = 0; i < temperatures.length; i++)
@@ -19,7 +22,11 @@ class DailyWeather extends StatelessWidget {
                 Image.asset('images/cloud-cloudy-day-forecast-sun-icon.png', width: 58, height: 50, fit: BoxFit.fill),
               if (mainWeathers[i] == 'Rain')
                 Image.asset('images/if-weather-32-2682819_90762.png', width: 58, height: 50, fit: BoxFit.fill),
-              SizedBox(height: 8),
+              if (mainWeathers[i] == 'Snow')
+                Image.asset('images/snow icon.png', width: 40, height: 42, fit: BoxFit.fill),  
+              if (mainWeathers[i] == 'Clear')
+                Image.asset('images/clear icon.png', width: 58, height: 50, fit: BoxFit.fill),    
+              SizedBox(height: 8),        
               Text(temperatures[i], style: TextStyle(color: Colors.white, fontSize: 12)),
             ]
           ),
