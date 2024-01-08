@@ -43,7 +43,7 @@ class _MyAppState extends State<MyApp> {
                   case ('Rain'):
                     return WidgetRain(weather: snapshot.data!);  
                   case ('Snow'):
-                    return WidgetClear(weather: snapshot.data!);  
+                    return WidgetSnow(weather: snapshot.data!);  
                   case ('Clear'):
                     return WidgetClear(weather: snapshot.data!);
                   default:
