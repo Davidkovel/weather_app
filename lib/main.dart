@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
               if (snapshot.hasData) {
                 String sky = snapshot.data!.main;
                 switch (sky) {
-                  case ('Clouds3'):
+                  case ('Clouds'):
                     return WidgetClouds(weather: snapshot.data!);
                   case ('Sunny'):
                     return WidgetSunny(weather: snapshot.data!);
@@ -47,8 +47,7 @@ class _MyAppState extends State<MyApp> {
                   case ('Clear'):
                     return WidgetClear(weather: snapshot.data!);
                   default:
-                    return WidgetRain(weather: snapshot.data!);
-                    //return WidgetClouds(weather: snapshot.data!);
+                    return WidgetClouds(weather: snapshot.data!);
                 }
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");

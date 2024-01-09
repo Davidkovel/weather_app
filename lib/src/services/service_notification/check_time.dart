@@ -59,7 +59,7 @@ Future<bool> checkRain(String allertTime) async {
   late SerializerJsonWeather weather;
   weather = await ApiService.getWeather(49.233082, 28.468218);
   var current_main_weather = weather.main;
-
+  print('object $current_main_weather');
   bool checkRain30Min = await get60MinForecast(alertDateTime);
 
   if (checkRain30Min) {

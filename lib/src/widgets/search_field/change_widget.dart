@@ -50,9 +50,7 @@ class _MyAppState extends State<MyApp2> {
                   case ('Clear'):
                     return WidgetClear(weather: snapshot.data!, coutryName: country); 
                   default:
-                    // return WidgetSunny(weather: snapshot.data!, coutryName: country);
-                  
-                    return WidgetRain(weather: snapshot.data!, coutryName: country);
+                    return WidgetClouds(weather: snapshot.data!, coutryName: country);
                 }
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
