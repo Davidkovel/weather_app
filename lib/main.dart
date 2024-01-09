@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'src/services/service_notification/notifications.dart';
-import 'src/widgets/display_widget.dart';
-import 'src/services/api_service.dart';
-import 'src/services/serializers.dart';
+import 'src/widgets/main_widget/display_widget.dart';
+import 'src/services/service_api/api_service.dart';
+import 'src/services/service_api/serializers.dart';
 
 void main() {
   initializeNotifications(); 

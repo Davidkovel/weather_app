@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 
-import 'package:weather_app/src/services/api_service.dart';
+import 'package:weather_app/src/services/service_api/api_service.dart';
 import 'change_widget.dart';
 
 /// Flutter code sample for [SearchBar].
@@ -31,7 +31,6 @@ class _SearchBarAppState extends State<SearchBarApp> {
         title: Text(entry.value),
         onTap: () {
           // Ваш код здесь
-          print('ENTRY $entry');
         },
       );
     }).toList();
@@ -74,6 +73,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
                   message: 'Change brightness mode',
                   child: IconButton(
                     icon: isDark ? const Icon(Icons.brightness_2_outlined) : const Icon(Icons.wb_sunny_outlined),
+                    isSelected: isDark,
                     onPressed: () {
                       setState(() {
                         isDark = !isDark;

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import 'package:weather_app/src/services/serializers.dart';
-import 'package:weather_app/src/widgets/check_weather.dart';
+import 'package:weather_app/src/services/service_api/serializers.dart';
+import 'package:weather_app/src/widgets/main_widget/check_weather.dart';
 import 'package:weather_app/src/widgets/search_field/search_widget.dart';
 
-import './second_page.dart';
+import '../second_page/time_picker.dart';
 
 List<dynamic> wind_and_humidity_from_serializer(weather){
   String wind_speed = weather.wind_speed[0]; // <- from 5.01 to 5 
@@ -153,12 +153,12 @@ class WidgetClouds extends StatelessWidget {
                     left: 12,
                     child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
                   ),
-                  SizedBox(height: 100 ,),
+                  SizedBox(height: 50 ,),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Home()));
-                    }, child: Text('data'))
+                    }, child: Text('Запланувати час'))
                 ],
               ),
             ),
@@ -263,12 +263,12 @@ class WidgetSunny extends StatelessWidget {
                     left: 12,
                     child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
                   ),
-                  SizedBox(height: 100 ,),
+                  SizedBox(height: 50 ,),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Home()));
-                    }, child: Text('data'))
+                    }, child: Text('Запланувати час'))
                 ],
               ),
             ),
@@ -373,12 +373,12 @@ class WidgetRain extends StatelessWidget {
                     left: 12,
                     child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
                   ),
-                  SizedBox(height: 100 ,),
+                  SizedBox(height: 50 ,),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Home()));
-                    }, child: Text('data'))
+                    }, child: Text('Запланувати час'))
                 ],
               ),
             ),
@@ -483,12 +483,12 @@ class WidgetSnow extends StatelessWidget {
                     left: 12,
                     child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
                   ),
-                  SizedBox(height: 100 ,),
+                  SizedBox(height: 50 ,),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Home()));
-                    }, child: Text('data'))
+                    }, child: Text('Запланувати час'))
                 ],
               ),
             ),
@@ -593,12 +593,12 @@ class WidgetClear extends StatelessWidget {
                     left: 12,
                     child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
                   ),
-                  SizedBox(height: 100 ,),
+                  SizedBox(height: 50 ,),
                   ElevatedButton(
                     onPressed: () {
                       Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Home()));
-                    }, child: Text('data'))
+                    }, child: Text('Запланувати час'))
                 ],
               ),
             ),

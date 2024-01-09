@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'package:intl/intl.dart';
 
-import 'package:weather_app/src/services/serializers.dart';
-import 'package:weather_app/src/services/api_service.dart';
+import 'package:weather_app/src/services/service_api/serializers.dart';
+import 'package:weather_app/src/services/service_api/api_service.dart';
 import 'package:workmanager/workmanager.dart';
 
 import '../../db/model.dart';

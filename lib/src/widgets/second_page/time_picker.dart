@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_app/src/services/service_notification/check_time.dart';
 import 'package:workmanager/workmanager.dart';
 
-import '../db/model.dart';
+import '../../db/model.dart';
 
 void runBackgroundTask(){
   WidgetsFlutterBinding.ensureInitialized();

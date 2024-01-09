@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../services/api_service.dart';
-import '../../services/serializers.dart';
-import '../display_widget.dart';
+import '../../services/service_api/api_service.dart';
+import '../../services/service_api/serializers.dart';
+import '../main_widget/display_widget.dart';
 
 class MyApp2 extends StatefulWidget {
   final String lat;
