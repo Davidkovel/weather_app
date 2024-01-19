@@ -1,8 +1,10 @@
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/src/services/service_notification/check_time.dart';
+
 import 'package:workmanager/workmanager.dart';
 
+import '../main_widget/style.dart';
 import '../../db/model.dart';
 
 void runBackgroundTask(){
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Time picker',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: blue,
       ),
       home: const Home(),
     );
@@ -104,7 +106,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      backgroundColor: indigo,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -115,7 +117,7 @@ class _HomeState extends State<Home> {
                   "${processAndDisplayTime(_time)}"
                       .toUpperCase(),
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 24),
+                  style: TextStyle(color: white, fontSize: 24),
                 ),
                 const SizedBox(height: 10),
                 const SizedBox(height: 10),
@@ -183,6 +185,6 @@ class _HomeState extends State<Home> {
                   },
                   child: const Text(
                     "Open time picker",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: white),
                   ),
                 ),*/

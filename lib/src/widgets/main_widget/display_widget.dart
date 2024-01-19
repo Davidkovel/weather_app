@@ -6,6 +6,7 @@ import 'package:weather_app/src/widgets/main_widget/check_weather.dart';
 import 'package:weather_app/src/widgets/search_field/search_widget.dart';
 
 import '../second_page/time_picker.dart';
+import 'style.dart';
 
 List<dynamic> wind_and_humidity_from_serializer(weather){
   String wind_speed = weather.wind_speed[0]; // <- from 5.01 to 5 
@@ -75,14 +76,14 @@ class WidgetClouds extends StatelessWidget {
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(
-      backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      backgroundColor: indigo,
       appBar: AppBar(
         title: Text(
           coutryName?? 'Kiev',
-          style: TextStyle(fontSize: 32, color: Colors.white),
+          style: TextStyle(fontSize: 32, color: white),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(253, 13, 13, 18),
+        backgroundColor: indigo,
       ),
       body: Container(
         child: Stack(
@@ -102,12 +103,12 @@ class WidgetClouds extends StatelessWidget {
                 children: [
                   Text(
                     temperatures[0],
-                    style: TextStyle(color: Colors.white, fontSize: 36),
+                    style: TextStyle(color: white, fontSize: 36),
                   ),
                   SizedBox(height: 8),
                   Text(
                     formattedDate,
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    style: TextStyle(color: white, fontSize: 24),
                   ),
                   SizedBox(height: 50),
                   Row(
@@ -118,7 +119,7 @@ class WidgetClouds extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             'low',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -129,7 +130,7 @@ class WidgetClouds extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[0],
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -140,7 +141,7 @@ class WidgetClouds extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[1],
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -185,14 +186,14 @@ class WidgetSunny extends StatelessWidget {
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(
-      backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      backgroundColor: indigo,
       appBar: AppBar(
         title: Text(
           coutryName?? 'Kiev',
-          style: TextStyle(fontSize: 32, color: Colors.white),
+          style: TextStyle(fontSize: 32, color: white),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(253, 13, 13, 18),
+        backgroundColor: indigo,
       ),
       body: Container(
         child: Stack(
@@ -212,12 +213,12 @@ class WidgetSunny extends StatelessWidget {
                 children: [
                   Text(
                     temperatures[0],
-                    style: TextStyle(color: Colors.white, fontSize: 36),
+                    style: TextStyle(color: white, fontSize: 36),
                   ),
                   SizedBox(height: 8),
                   Text(
                     formattedDate,
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    style: TextStyle(color: white, fontSize: 24),
                   ),
                   SizedBox(height: 50),
                   Row(
@@ -228,7 +229,7 @@ class WidgetSunny extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             'low',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -239,7 +240,7 @@ class WidgetSunny extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[0],
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -250,7 +251,7 @@ class WidgetSunny extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[1],
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -295,14 +296,14 @@ class WidgetRain extends StatelessWidget {
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(
-      backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      backgroundColor: indigo,
       appBar: AppBar(
         title: Text(
           coutryName?? 'Kiev',
-          style: TextStyle(fontSize: 32, color: Colors.white),
+          style: TextStyle(fontSize: 32, color: white),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(253, 13, 13, 18),
+        backgroundColor: indigo,
       ),
       body: Container(
         child: Stack(
@@ -322,12 +323,12 @@ class WidgetRain extends StatelessWidget {
                 children: [
                   Text(
                     temperatures[0],
-                    style: TextStyle(color: Colors.white, fontSize: 36),
+                    style: TextStyle(color: white, fontSize: 36),
                   ),
                   SizedBox(height: 8),
                   Text(
                     formattedDate,
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    style: TextStyle(color: white, fontSize: 24),
                   ),
                   SizedBox(height: 50),
                   Row(
@@ -338,7 +339,7 @@ class WidgetRain extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             'low',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -349,7 +350,7 @@ class WidgetRain extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[0],
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -360,7 +361,7 @@ class WidgetRain extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[1],
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -405,14 +406,14 @@ class WidgetSnow extends StatelessWidget {
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(
-      backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      backgroundColor: indigo,
       appBar: AppBar(
         title: Text(
           coutryName?? 'Kiev',
-          style: TextStyle(fontSize: 32, color: Colors.white),
+          style: TextStyle(fontSize: 32, color: white),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(253, 13, 13, 18),
+        backgroundColor: indigo,
       ),
       body: Container(
         child: Stack(
@@ -432,12 +433,12 @@ class WidgetSnow extends StatelessWidget {
                 children: [
                   Text(
                     temperatures[0],
-                    style: TextStyle(color: Colors.white, fontSize: 36),
+                    style: TextStyle(color: white, fontSize: 36),
                   ),
                   SizedBox(height: 8),
                   Text(
                     formattedDate,
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    style: TextStyle(color: white, fontSize: 24),
                   ),
                   SizedBox(height: 50),
                   Row(
@@ -448,7 +449,7 @@ class WidgetSnow extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             'low',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -459,7 +460,7 @@ class WidgetSnow extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[0],
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -470,7 +471,7 @@ class WidgetSnow extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[1],
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -515,14 +516,14 @@ class WidgetClear extends StatelessWidget {
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(
-      backgroundColor: Color.fromARGB(253, 13, 13, 18),
+      backgroundColor: indigo,
       appBar: AppBar(
         title: Text(
           coutryName?? 'Kiev',
-          style: TextStyle(fontSize: 32, color: Colors.white),
+          style: TextStyle(fontSize: 32, color: white),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(253, 13, 13, 18),
+        backgroundColor: indigo,
       ),
       body: Container(
         child: Stack(
@@ -542,12 +543,12 @@ class WidgetClear extends StatelessWidget {
                 children: [
                   Text(
                     temperatures[0],
-                    style: TextStyle(color: Colors.white, fontSize: 36),
+                    style: TextStyle(color: white, fontSize: 36),
                   ),
                   SizedBox(height: 8),
                   Text(
                     formattedDate,
-                    style: TextStyle(color: Colors.white, fontSize: 24),
+                    style: TextStyle(color: white, fontSize: 24),
                   ),
                   SizedBox(height: 50),
                   Row(
@@ -558,7 +559,7 @@ class WidgetClear extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             'low',
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -569,7 +570,7 @@ class WidgetClear extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[0],
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),
@@ -580,7 +581,7 @@ class WidgetClear extends StatelessWidget {
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[1],
-                            style: TextStyle(color: Colors.white, fontSize: 18),
+                            style: TextStyle(color: white, fontSize: 18),
                           ),
                         ],
                       ),

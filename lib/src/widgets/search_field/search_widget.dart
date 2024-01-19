@@ -3,6 +3,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 
 import 'package:weather_app/src/services/service_api/api_service.dart';
+import '../main_widget/style.dart';
 import 'change_widget.dart';
 
 /// Flutter code sample for [SearchBar].
@@ -52,7 +53,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
         brightness: isDark ? Brightness.dark : Brightness.light);
 
     return Scaffold(
-        backgroundColor: Color.fromARGB(253, 13, 13, 18),
+        backgroundColor: indigo,
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: SearchAnchor(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'style.dart';
 // import 'package:flutter/widgets.dart';
 
 
@@ -27,7 +29,7 @@ class DailyWeather extends StatelessWidget {
               if (mainWeathers[i] == 'Clear')
                 Image.asset('images/clear icon.png', width: 58, height: 50, fit: BoxFit.fill),    
               SizedBox(height: 8),        
-              Text(temperatures[i], style: TextStyle(color: Colors.white, fontSize: 12)),
+              Text(temperatures[i], style: TextStyle(color: white, fontSize: 12)),
             ]
           ),
       ],
