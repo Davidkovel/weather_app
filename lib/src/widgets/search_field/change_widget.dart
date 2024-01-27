@@ -6,9 +6,10 @@ import '../main_widget/display_widget.dart';
 class MyApp2 extends StatefulWidget {
   final String lat;
   final String lon;
-  final String? Country;
+  final String? City;
+  final String? CountryCode;
 
-  MyApp2({this.lat = "49.233082", this.lon = "28.468218", this.Country});
+  MyApp2({this.lat = "49.233082", this.lon = "28.468218", this.City, this.CountryCode});
 
   @override
   _MyAppState createState() => _MyAppState();
@@ -16,19 +17,18 @@ class MyApp2 extends StatefulWidget {
 
 class _MyAppState extends State<MyApp2> {
   late Future<SerializerJsonWeather> futureWeather;
-  String? country;
-
+  String? city, countryCode;
   @override
   void initState() {
     super.initState();
     print('${widget.lat} ${widget.lon}');
-    country = widget.Country;
+    city = widget.City;
+    countryCode = widget.CountryCode;
     futureWeather = ApiService.getWeather(double.parse(widget.lat), double.parse(widget.lon));
   }
 
   @override
   Widget build(BuildContext context) {
-    print('$country');
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -40,17 +40,17 @@ class _MyAppState extends State<MyApp2> {
                 String sky = snapshot.data!.main;
                 switch (sky) {
                   case ('Clouds'):
-                    return WidgetClouds(weather: snapshot.data!, coutryName: country);
+                    return WidgetClouds(weather: snapshot.data!, cityName: city, countryCode: countryCode);
                   case ('Sunny'):
-                    return WidgetSunny(weather: snapshot.data!, coutryName: country);
+                    return WidgetSunny(weather: snapshot.data!, cityName: city, countryCode: countryCode);
                   case ('Rain'):
-                    return WidgetRain(weather: snapshot.data!, coutryName: country);  
+                    return WidgetRain(weather: snapshot.data!, cityName: city, countryCode: countryCode);  
                   case ('Snow'):
-                    return WidgetSnow(weather: snapshot.data!, coutryName: country); 
+                    return WidgetSnow(weather: snapshot.data!, cityName: city, countryCode: countryCode); 
                   case ('Clear'):
-                    return WidgetClear(weather: snapshot.data!, coutryName: country); 
+                    return WidgetClear(weather: snapshot.data!, cityName: city, countryCode: countryCode); 
                   default:
-                    return WidgetClouds(weather: snapshot.data!, coutryName: country);
+                    return WidgetClouds(weather: snapshot.data!, cityName: city, countryCode: countryCode);
                 }
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");

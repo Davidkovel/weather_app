@@ -62,9 +62,10 @@ List<String> main_from_serializer(weather){
 
 class WidgetClouds extends StatelessWidget {
   final SerializerJsonWeather weather;
-  final String? coutryName;
- 
-  WidgetClouds({required this.weather, this.coutryName});
+  final String? cityName;
+  final String? countryCode;
+
+  WidgetClouds({required this.weather, this.cityName, this.countryCode});
   
   @override
   Widget build(BuildContext context) {
@@ -72,14 +73,14 @@ class WidgetClouds extends StatelessWidget {
     var main_weathers = main_from_serializer(weather);
     var weather_descriptions = wind_and_humidity_from_serializer(weather);
     // createDatabase();
-     print('$coutryName');
+     print('$cityName');
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(
       backgroundColor: indigo,
       appBar: AppBar(
         title: Text(
-          coutryName?? 'Kiev',
+          cityName?? 'Kiev',
           style: TextStyle(fontSize: 32, color: white),
         ),
         centerTitle: true,
@@ -152,7 +153,7 @@ class WidgetClouds extends StatelessWidget {
                   Positioned(
                     top: 12,
                     left: 12,
-                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
+                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers, city: cityName?? 'Kiev', countryCode: countryCode?? 'ua')
                   ),
                   SizedBox(height: 50 ,),
                   ElevatedButton(
@@ -172,9 +173,10 @@ class WidgetClouds extends StatelessWidget {
 
 class WidgetSunny extends StatelessWidget {
   final SerializerJsonWeather weather;
-  final String? coutryName;
- 
-  WidgetSunny({required this.weather, this.coutryName});
+  final String? cityName;
+  final String? countryCode;
+
+  WidgetSunny({required this.weather, this.cityName, this.countryCode});
   
   @override
   Widget build(BuildContext context) {
@@ -182,14 +184,14 @@ class WidgetSunny extends StatelessWidget {
     var main_weathers = main_from_serializer(weather);
     var weather_descriptions = wind_and_humidity_from_serializer(weather);
     // createDatabase();
-     print('$coutryName');
+     print('$cityName');
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(
       backgroundColor: indigo,
       appBar: AppBar(
         title: Text(
-          coutryName?? 'Kiev',
+          cityName?? 'Kiev',
           style: TextStyle(fontSize: 32, color: white),
         ),
         centerTitle: true,
@@ -262,7 +264,7 @@ class WidgetSunny extends StatelessWidget {
                   Positioned(
                     top: 12,
                     left: 12,
-                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
+                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers, city: cityName?? 'Kiev', countryCode: countryCode?? 'ua')
                   ),
                   SizedBox(height: 50 ,),
                   ElevatedButton(
@@ -282,9 +284,10 @@ class WidgetSunny extends StatelessWidget {
 
 class WidgetRain extends StatelessWidget {
   final SerializerJsonWeather weather;
-  final String? coutryName;
- 
-  WidgetRain({required this.weather, this.coutryName});
+  final String? cityName;
+  final String? countryCode;
+
+  WidgetRain({required this.weather, this.cityName, this.countryCode});
   
   @override
   Widget build(BuildContext context) {
@@ -292,14 +295,14 @@ class WidgetRain extends StatelessWidget {
     var main_weathers = main_from_serializer(weather);
     var weather_descriptions = wind_and_humidity_from_serializer(weather);
     // createDatabase();
-     print('$coutryName');
+     print('$cityName');
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(
       backgroundColor: indigo,
       appBar: AppBar(
         title: Text(
-          coutryName?? 'Kiev',
+          cityName?? 'Kiev',
           style: TextStyle(fontSize: 32, color: white),
         ),
         centerTitle: true,
@@ -372,7 +375,7 @@ class WidgetRain extends StatelessWidget {
                   Positioned(
                     top: 12,
                     left: 12,
-                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
+                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers, city: cityName?? 'Kiev', countryCode: countryCode?? 'ua')
                   ),
                   SizedBox(height: 50 ,),
                   ElevatedButton(
@@ -392,9 +395,10 @@ class WidgetRain extends StatelessWidget {
 
 class WidgetSnow extends StatelessWidget {
   final SerializerJsonWeather weather;
-  final String? coutryName;
- 
-  WidgetSnow({required this.weather, this.coutryName});
+  final String? cityName;
+  final String? countryCode;
+
+  WidgetSnow({required this.weather, this.cityName, this.countryCode});
   
   @override
   Widget build(BuildContext context) {
@@ -402,14 +406,14 @@ class WidgetSnow extends StatelessWidget {
     var main_weathers = main_from_serializer(weather);
     var weather_descriptions = wind_and_humidity_from_serializer(weather);
     // createDatabase();
-     print('$coutryName');
+     print('$cityName');
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(
       backgroundColor: indigo,
       appBar: AppBar(
         title: Text(
-          coutryName?? 'Kiev',
+          cityName?? 'Kiev',
           style: TextStyle(fontSize: 32, color: white),
         ),
         centerTitle: true,
@@ -482,7 +486,7 @@ class WidgetSnow extends StatelessWidget {
                   Positioned(
                     top: 12,
                     left: 12,
-                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
+                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers, city: cityName?? 'Kiev', countryCode: countryCode?? 'ua')
                   ),
                   SizedBox(height: 50 ,),
                   ElevatedButton(
@@ -502,9 +506,10 @@ class WidgetSnow extends StatelessWidget {
 
 class WidgetClear extends StatelessWidget {
   final SerializerJsonWeather weather;
-  final String? coutryName;
- 
-  WidgetClear({required this.weather, this.coutryName});
+  final String? cityName;
+  final String? countryCode;
+
+  WidgetClear({required this.weather, this.cityName, this.countryCode});
   
   @override
   Widget build(BuildContext context) {
@@ -512,14 +517,14 @@ class WidgetClear extends StatelessWidget {
     var main_weathers = main_from_serializer(weather);
     var weather_descriptions = wind_and_humidity_from_serializer(weather);
     // createDatabase();
-     print('$coutryName');
+     print('$cityName');
     String formattedDate = DateFormat('EEEE, d MMMM').format(DateTime.now());
     var i = 0;
   return Scaffold(
       backgroundColor: indigo,
       appBar: AppBar(
         title: Text(
-          coutryName?? 'Kiev',
+          cityName?? 'Kiev',
           style: TextStyle(fontSize: 32, color: white),
         ),
         centerTitle: true,
@@ -592,7 +597,7 @@ class WidgetClear extends StatelessWidget {
                   Positioned(
                     top: 12,
                     left: 12,
-                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers)
+                    child: DailyWeather(temperatures: temperatures, mainWeathers: main_weathers, city: cityName?? 'Kiev', countryCode: countryCode?? 'ua')
                   ),
                   SizedBox(height: 50 ,),
                   ElevatedButton(

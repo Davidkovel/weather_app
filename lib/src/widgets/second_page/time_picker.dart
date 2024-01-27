@@ -88,16 +88,13 @@ class _HomeState extends State<Home> {
   }
 
   Future<String> featureCheckingTime(DateTime combinedDateTime) async {
-    print('$combinedDateTime');
     final formattedTime = formatTime(combinedDateTime);
     int id = await WeatherAPICreate(combinedDateTime);
-    print('hhhbbk ${formattedTime}');
 
     if (formattedTime != '01:02'){
       List<String> lst = [formattedTime];
       startEventLoop(id);
       //callbackDispatcher(id);
-      print('${lst}');
     }
     return "Ви вибрали: $formattedTime";
   }
@@ -107,6 +104,10 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: indigo,
+      appBar: AppBar(
+        backgroundColor: indigo,
+        title: Text('Запланувати час'),
+      ),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'style.dart';
 // import 'package:flutter/widgets.dart';
@@ -7,32 +8,44 @@ import 'style.dart';
 class DailyWeather extends StatelessWidget {
   final List<String> temperatures;
   final List<String> mainWeathers;
+  final String countryCode;
+  final String city;
 
-  DailyWeather({required this.temperatures, required this.mainWeathers});
+  DailyWeather({required this.temperatures, required this.mainWeathers, required this.countryCode, required this.city});
+
+  void _launchURL() async {
+    final url = 'https://www.accuweather.com/en/$countryCode/$city-weather';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    for (int i = 0; i < temperatures.length; i++) {
-      print('-- ${mainWeathers[i]}');
-    }
-    return Row(
-      children: [
-        for (int i = 0; i < temperatures.length; i++)
-          Column(
-            children: [
-              if (mainWeathers[i] == 'Clouds')
-                Image.asset('images/cloud-cloudy-day-forecast-sun-icon.png', width: 58, height: 50, fit: BoxFit.fill),
-              if (mainWeathers[i] == 'Rain')
-                Image.asset('images/if-weather-32-2682819_90762.png', width: 58, height: 50, fit: BoxFit.fill),
-              if (mainWeathers[i] == 'Snow')
-                Image.asset('images/snow icon.png', width: 40, height: 42, fit: BoxFit.fill),  
-              if (mainWeathers[i] == 'Clear')
-                Image.asset('images/clear icon.png', width: 58, height: 50, fit: BoxFit.fill),    
-              SizedBox(height: 8),        
-              Text(temperatures[i], style: TextStyle(color: white, fontSize: 12)),
-            ]
-          ),
-      ],
+    return InkWell(
+      onTap: _launchURL,
+      child: Row(
+        children: [
+          for (int i = 0; i < temperatures.length; i++)
+            Column(
+              children: [
+                if (mainWeathers[i] == 'Clouds')
+                  Image.asset('images/cloud-cloudy-day-forecast-sun-icon.png', width: 58, height: 50, fit: BoxFit.fill),
+                if (mainWeathers[i] == 'Rain')
+                  Image.asset('images/if-weather-32-2682819_90762.png', width: 58, height: 50, fit: BoxFit.fill),
+                if (mainWeathers[i] == 'Snow')
+                  Image.asset('images/snow icon.png', width: 40, height: 42, fit: BoxFit.fill),  
+                if (mainWeathers[i] == 'Clear')
+                  Image.asset('images/clear icon.png', width: 58, height: 50, fit: BoxFit.fill),    
+                SizedBox(height: 8),        
+                Text(temperatures[i], style: TextStyle(color: white, fontSize: 12)),
+              ]
+            ),
+        ],
+      ),
     );
   }
 }

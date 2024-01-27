@@ -22,14 +22,14 @@ class _SearchBarAppState extends State<SearchBarApp> {
   
   Future<List<ListTile>> fileCoutriesNames() async {
     // Загрузка содержимого JSON-файла
-    String jsonString = await rootBundle.loadString('files/coutries_names.json');
+    String jsonString = await rootBundle.loadString('files/cities.json');
 
     // Хэш таблицы
     Map<String, dynamic> data = jsonDecode(jsonString);
 
     List<ListTile> listTiles = data.entries.map((entry) {
       return ListTile(
-        title: Text(entry.value),
+        title: Text(entry.key),
         onTap: () {
           // Ваш код здесь
         },
@@ -42,7 +42,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
   Future<Map<String, dynamic>> fetchAndPrintCoordinates(String countryName) async {
     var coordinates = await GetCoordinate(q: countryName).fetchCoordinates();
     print('Latitude: ${coordinates['latitude']}, Longitude: ${coordinates['longitude']}');
-    return {'latitude': coordinates['latitude'], 'longitude': coordinates['longitude']};
+    return {'latitude': coordinates['latitude'], 'longitude': coordinates['longitude'], 'countryCode': coordinates['countryCode']};
   }
 
 
@@ -97,7 +97,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
                       fetchAndPrintCoordinates(countryName).then((coordinates) {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => MyApp2(lat: coordinates['latitude'].toString(), lon: coordinates['longitude'].toString(), Country: countryName,),
+                          builder: (context) => MyApp2(lat: coordinates['latitude'].toString(), lon: coordinates['longitude'].toString(), City: countryName, CountryCode: coordinates['countryCode'].toString(),),
                         ),
                       );
                     });

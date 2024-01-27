@@ -33,13 +33,14 @@ class GetCoordinate {
     required this.q,
   });
 
-  Future<Map<String, double>> fetchCoordinates() async {
+  Future<Map<String, dynamic>> fetchCoordinates() async {
     var httpResponse = await http.get(Uri.parse('$_apiUrl?q=$q&limit=$limit&appid=$_apiKey'));
     if (httpResponse.statusCode == 200){
       var responseData = json.decode(httpResponse.body); // С JSON на обычний типа данных DART
       double latitude = responseData[0]['lat'];
       double longitude = responseData[0]['lon'];
-      return {'latitude': latitude, 'longitude': longitude};
+      String countryCode = responseData[0]['country'];
+      return {'latitude': latitude, 'longitude': longitude, 'countryCode': countryCode};
     }
     return {'latitude': 0.0, 'longitude': 0.0}; // Возвращаем нулевые координаты, если запрос не удался
   }
