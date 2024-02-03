@@ -94,7 +94,7 @@ class WidgetClouds extends StatelessWidget {
             Positioned(
               left: 120,
               top: 68,
-              child: Image.asset('images/clouds.gif', width: 140, height: 140, fit: BoxFit.fill),
+              child: Image.asset('assets/images/clouds.gif', width: 140, height: 140, fit: BoxFit.fill),
             ),
             Positioned(
               left: 56,
@@ -116,7 +116,7 @@ class WidgetClouds extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Image.asset('images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             'low',
@@ -127,7 +127,7 @@ class WidgetClouds extends StatelessWidget {
                       SizedBox(width: 30),
                       Column(
                         children: [
-                          Image.asset('images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[0],
@@ -138,7 +138,7 @@ class WidgetClouds extends StatelessWidget {
                       SizedBox(width: 30),
                       Column(
                         children: [
-                          Image.asset('images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[1],
@@ -205,7 +205,7 @@ class WidgetSunny extends StatelessWidget {
             Positioned(
               left: 120,
               top: 50,
-              child: Image.asset('images/sunny.gif', width: 140, height: 140, fit: BoxFit.fill),
+              child: Image.asset('assets/images/sunny.gif', width: 140, height: 140, fit: BoxFit.fill),
             ),
             Positioned(
               left: 56,
@@ -227,7 +227,7 @@ class WidgetSunny extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Image.asset('images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             'low',
@@ -238,7 +238,7 @@ class WidgetSunny extends StatelessWidget {
                       SizedBox(width: 30),
                       Column(
                         children: [
-                          Image.asset('images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[0],
@@ -249,7 +249,7 @@ class WidgetSunny extends StatelessWidget {
                       SizedBox(width: 30),
                       Column(
                         children: [
-                          Image.asset('images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[1],
@@ -316,7 +316,7 @@ class WidgetRain extends StatelessWidget {
             Positioned(
               left: 120,
               top: 68,
-              child: Image.asset('images/rain.gif', width: 140, height: 140, fit: BoxFit.fill),
+              child: Image.asset('assets/images/rain.gif', width: 140, height: 140, fit: BoxFit.fill),
             ),
             Positioned(
               left: 56,
@@ -338,7 +338,7 @@ class WidgetRain extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Image.asset('images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             'low',
@@ -349,7 +349,7 @@ class WidgetRain extends StatelessWidget {
                       SizedBox(width: 30),
                       Column(
                         children: [
-                          Image.asset('images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[0],
@@ -360,7 +360,7 @@ class WidgetRain extends StatelessWidget {
                       SizedBox(width: 30),
                       Column(
                         children: [
-                          Image.asset('images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[1],
@@ -427,7 +427,7 @@ class WidgetSnow extends StatelessWidget {
             Positioned(
               left: 120,
               top: 50,
-              child: Image.asset('images/snow.gif', width: 140, height: 140, fit: BoxFit.fill),
+              child: Image.asset('assets/images/snow.gif', width: 140, height: 140, fit: BoxFit.fill),
             ),
             Positioned(
               left: 56,
@@ -449,7 +449,7 @@ class WidgetSnow extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Image.asset('images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             'low',
@@ -460,7 +460,7 @@ class WidgetSnow extends StatelessWidget {
                       SizedBox(width: 30),
                       Column(
                         children: [
-                          Image.asset('images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[0],
@@ -471,7 +471,7 @@ class WidgetSnow extends StatelessWidget {
                       SizedBox(width: 30),
                       Column(
                         children: [
-                          Image.asset('images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[1],
@@ -538,7 +538,7 @@ class WidgetClear extends StatelessWidget {
             Positioned(
               left: 120,
               top: 68,
-              child: Image.asset('images/clear.gif', width: 130, height: 140, fit: BoxFit.fill),
+              child: Image.asset('assets/images/clear.gif', width: 130, height: 140, fit: BoxFit.fill),
             ),
             Positioned(
               left: 56,
@@ -560,7 +560,7 @@ class WidgetClear extends StatelessWidget {
                     children: [
                       Column(
                         children: [
-                          Image.asset('images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/54332.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             'low',
@@ -571,7 +571,7 @@ class WidgetClear extends StatelessWidget {
                       SizedBox(width: 30),
                       Column(
                         children: [
-                          Image.asset('images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/3741354-weather-wind-windy_108870.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[0],
@@ -582,7 +582,7 @@ class WidgetClear extends StatelessWidget {
                       SizedBox(width: 30),
                       Column(
                         children: [
-                          Image.asset('images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
+                          Image.asset('assets/images/Humidity-icon.png', width: 45, height: 45, fit: BoxFit.fill),
                           SizedBox(height: 8),
                           Text(
                             weather_descriptions[1],

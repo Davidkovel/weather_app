@@ -1,9 +1,13 @@
 import 'package:day_night_time_picker/day_night_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_app/src/services/service_notification/check_time.dart';
+import 'package:intl/intl.dart';
 
+import 'package:weather_app/src/services/service_api/serializers.dart';
+import 'package:weather_app/src/services/service_api/api_service.dart';
 import 'package:workmanager/workmanager.dart';
 
+import '../../services/service_notification/notifications.dart';
 import '../main_widget/style.dart';
 import '../../db/model.dart';
 
@@ -14,7 +18,7 @@ void runBackgroundTask(){
       frequency: Duration(minutes: 15));
 }
 
-void callbackDispatcher(int id) {
+void callbackDispatcher(id) {
   print('started background task');
   Workmanager().executeTask((task, inputData) async {
     startEventLoop(id);
@@ -87,14 +91,63 @@ class _HomeState extends State<Home> {
     return "Ви вибрали: $formattedTime";
   }
 
+  bool hasTimePassed(String alertTime) {
+    DateTime now = DateTime.now();
+    DateTime alert = DateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(alertTime);
+
+    // Якщо поточний час більший або рівний часу сповіщення, повертаємо true
+    if (now.isAfter(alert) || now.isAtSameMomentAs(alert)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> checkRain(String allertTime) async {
+    //  print('Начало выполнения фоновой задачи (каждую минуту)');
+    DateTime alertDateTime = DateTime.parse(allertTime);
+
+    late SerializerJsonWeather weather;
+    weather = await ApiService.getWeather(49.233082, 28.468218);
+    var current_main_weather = weather.main;
+    print('object $current_main_weather');
+    bool checkRain30Min = await get60MinForecast(alertDateTime);
+
+    if (checkRain30Min) {
+      print('Повідомлення, що дощ буде через 60 хвилин');
+      return true;
+    }
+    if (current_main_weather == 'Rain') {
+        print('trueee');
+        RainyNotification();
+        return true;
+      }
+    return false;
+  }
+
   Future<String> featureCheckingTime(DateTime combinedDateTime) async {
     final formattedTime = formatTime(combinedDateTime);
-    int id = await WeatherAPICreate(combinedDateTime);
 
+    int id = await WeatherAPICreate(combinedDateTime);
+    String allertTime = await WeatherAPIRetrieve(id);
+    bool conditionRain = await checkRain(allertTime);
+    //print(id);
     if (formattedTime != '01:02'){
       List<String> lst = [formattedTime];
-      startEventLoop(id);
-      //callbackDispatcher(id);
+      if (await hasTimePassed(allertTime)){
+          await WeatherAPIDelete(id);
+          PickMoreTime();
+          print('Час менший за поточний. Виберіть більше часу');
+          print('Або за цей час не було дощу');
+        
+      } else if (conditionRain) {
+          await WeatherAPIDelete(id);
+          RainyNotification();
+          print('Дощщщ!!!');
+      } else {
+          runBackgroundTask();
+          // startEventLoop(id);
+      }
     }
     return "Ви вибрали: $formattedTime";
   }

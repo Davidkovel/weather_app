@@ -4,7 +4,7 @@ import 'dart:convert';
 Future<int> WeatherAPICreate(DateTime time) async {
   String formattedTime = time.toIso8601String();
 
-  var response = await http.post(Uri.parse('http://127.0.0.1:8000/api/v1/timecreate/?allertTime=$formattedTime'));
+  var response = await http.post(Uri.parse('http://192.168.209.79:8000/api/v1/timecreate/?allertTime=$formattedTime'));
   print('hhhh ${response.body}');
   
   Map<String, dynamic> responseBody = jsonDecode(response.body);
@@ -14,7 +14,7 @@ Future<int> WeatherAPICreate(DateTime time) async {
 }
 
 Future<String> WeatherAPIRetrieve(int id) async {
-  var response = await http.get(Uri.parse('http://127.0.0.1:8000/api/v1/timelist/$id'));
+  var response = await http.get(Uri.parse('http://192.168.209.79:8000/api/v1/timelist/$id'));
 
   Map<String, dynamic> responseBody = jsonDecode(response.body);
   String allertTime = responseBody['alertTime'];
@@ -23,7 +23,7 @@ Future<String> WeatherAPIRetrieve(int id) async {
 }
 
 Future<void> WeatherAPIDelete(int id) async {
-  var response = await http.delete(Uri.parse('http://127.0.0.1:8000/api/v1/timedelete/$id'));
+  var response = await http.delete(Uri.parse('http://192.168.209.79:8000/api/v1/timedelete/$id'));
 }
 
 /*import 'package:sqflite/sqflite.dart';

@@ -33,13 +33,13 @@ class DailyWeather extends StatelessWidget {
             Column(
               children: [
                 if (mainWeathers[i] == 'Clouds')
-                  Image.asset('images/cloud-cloudy-day-forecast-sun-icon.png', width: 58, height: 50, fit: BoxFit.fill),
+                  Image.asset('assets/images/cloud-cloudy-day-forecast-sun-icon.png', width: 58, height: 50, fit: BoxFit.fill),
                 if (mainWeathers[i] == 'Rain')
-                  Image.asset('images/if-weather-32-2682819_90762.png', width: 58, height: 50, fit: BoxFit.fill),
+                  Image.asset('assets/images/if-weather-32-2682819_90762.png', width: 58, height: 50, fit: BoxFit.fill),
                 if (mainWeathers[i] == 'Snow')
-                  Image.asset('images/snow icon.png', width: 40, height: 42, fit: BoxFit.fill),  
+                  Image.asset('assets/images/snow icon.png', width: 40, height: 42, fit: BoxFit.fill),  
                 if (mainWeathers[i] == 'Clear')
-                  Image.asset('images/clear icon.png', width: 58, height: 50, fit: BoxFit.fill),    
+                  Image.asset('assets/images/clear icon.png', width: 58, height: 50, fit: BoxFit.fill),    
                 SizedBox(height: 8),        
                 Text(temperatures[i], style: TextStyle(color: white, fontSize: 12)),
               ]
@@ -65,7 +65,7 @@ class DailyWeather extends StatelessWidget {
       children: [
         Column(
           children: [
-            Image.asset('images/cloud-cloudy-day-forecast-sun-icon.png', width: 58, height: 50, fit: BoxFit.fill),
+            Image.asset('assets/images/cloud-cloudy-day-forecast-sun-icon.png', width: 58, height: 50, fit: BoxFit.fill),
             SizedBox(height: 8),
             Text(temperatures[0], style: TextStyle(color: Colors.white, fontSize: 12),),
           ]
@@ -73,7 +73,7 @@ class DailyWeather extends StatelessWidget {
         SizedBox(width: 14,),
         Column(
           children: [
-            Image.asset('images/cloud-cloudy-day-forecast-sun-icon.png', width: 58, height: 50, fit: BoxFit.fill),
+            Image.asset('assets/images/cloud-cloudy-day-forecast-sun-icon.png', width: 58, height: 50, fit: BoxFit.fill),
             SizedBox(height: 8),
             Text(temperatures[1], style: TextStyle(color: Colors.white, fontSize: 12),),
           ]
@@ -81,7 +81,7 @@ class DailyWeather extends StatelessWidget {
         SizedBox(width: 14,),
         Column(
           children: [
-            Image.asset('images/if-weather-32-2682819_90762.png', width: 58, height: 50, fit: BoxFit.fill),
+            Image.asset('assets/images/if-weather-32-2682819_90762.png', width: 58, height: 50, fit: BoxFit.fill),
             SizedBox(height: 8),
             Text(temperatures[2], style: TextStyle(color: Colors.white, fontSize: 12),),
           ]
@@ -89,7 +89,7 @@ class DailyWeather extends StatelessWidget {
         SizedBox(width: 14,),
         Column(
           children: [
-            Image.asset('images/unnamed.png', width: 58, height: 50, fit: BoxFit.fill),
+            Image.asset('assets/images/unnamed.png', width: 58, height: 50, fit: BoxFit.fill),
             SizedBox(height: 8),
             Text(temperatures[3], style: TextStyle(color: Colors.white, fontSize: 12),),
           ]
@@ -97,7 +97,7 @@ class DailyWeather extends StatelessWidget {
         SizedBox(width: 14,),
         Column(
           children: [
-            Image.asset('images/if-weather-32-2682819_90762.png', width: 58, height: 50, fit: BoxFit.fill),
+            Image.asset('assets/images/if-weather-32-2682819_90762.png', width: 58, height: 50, fit: BoxFit.fill),
             SizedBox(height: 8),
             Text(temperatures[4], style: TextStyle(color: Colors.white, fontSize: 12),),
           ]

@@ -22,7 +22,7 @@ class _SearchBarAppState extends State<SearchBarApp> {
   
   Future<List<ListTile>> fileCoutriesNames() async {
     // Загрузка содержимого JSON-файла
-    String jsonString = await rootBundle.loadString('files/cities.json');
+    String jsonString = await rootBundle.loadString('assets/files/cities.json');
 
     // Хэш таблицы
     Map<String, dynamic> data = jsonDecode(jsonString);

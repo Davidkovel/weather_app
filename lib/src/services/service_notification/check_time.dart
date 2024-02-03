@@ -9,7 +9,10 @@ import '../../db/model.dart';
 import 'notifications.dart';
 
 void startEventLoop(int id) async {
+  print('fdsfds');
+  // RainyNotification();
   checkConditions(id);
+
 }
 
 void checkConditions(int id) async {
@@ -19,15 +22,14 @@ void checkConditions(int id) async {
   if (coditionTime) {
     // время прошло
     await WeatherAPIDelete(id);
-    
-    print('Час менший за поточний. Виберіть більше часу');
+    TimeIsEnd();
     print('Або за цей час не було дощу');
   } else {
       bool conditionRain = await checkRain(allertTime);
       if (conditionRain) {
         // Дощ || Повідомлення має спрацювати тут !!!
         RainyNotification();
-        // Workmanager().cancelByUniqueName("1");
+        Workmanager().cancelByUniqueName("1");
         await WeatherAPIDelete(id);
         print('Дощщщ!!!');
       }
@@ -68,7 +70,7 @@ Future<bool> checkRain(String allertTime) async {
   }
   if (current_main_weather == 'Rain') {
       print('trueee');
-      // showNotificationForRain();
+      RainyNotification();
       return true;
     }
   return false;
